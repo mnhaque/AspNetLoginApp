@@ -12543,11 +12543,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mahammed_haque\\Documents\\Visual Studio 2017\\Projects\\AuthenticationApplication\\AuthenticationApplication\\AuthenticationApplication.csproj",
+      "projectUniqueName": "D:\\AspNet\\AuthenticationApplication\\AuthenticationApplication\\AuthenticationApplication.csproj",
       "projectName": "AuthenticationApplication",
-      "projectPath": "C:\\Users\\mahammed_haque\\Documents\\Visual Studio 2017\\Projects\\AuthenticationApplication\\AuthenticationApplication\\AuthenticationApplication.csproj",
+      "projectPath": "D:\\AspNet\\AuthenticationApplication\\AuthenticationApplication\\AuthenticationApplication.csproj",
       "packagesPath": "C:\\Users\\mahammed_haque\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mahammed_haque\\Documents\\Visual Studio 2017\\Projects\\AuthenticationApplication\\AuthenticationApplication\\obj\\",
+      "outputPath": "D:\\AspNet\\AuthenticationApplication\\AuthenticationApplication\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
