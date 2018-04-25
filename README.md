@@ -22,7 +22,7 @@ Technology Stack -</br>
 •        Unit Test Cases (Moq) both ASP.Net MVC and Web API</br>
 </br></br>
 ## Screens
-[Login](Screens/image009.jpg) 
-[Default](Screens/image002.jpg)
-[Register](Screens/image005.jpg)
-[Welcome](Screens/image011.jpg) 
+![Login](Screens/image009.jpg) 
+![Default](Screens/image002.jpg)
+![Register](Screens/image005.jpg)
+![Welcome](Screens/image011.jpg) 
