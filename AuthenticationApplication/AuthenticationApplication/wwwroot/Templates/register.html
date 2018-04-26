@@ -5,12 +5,12 @@
         <input name="middleName" ng-model="middleName" type="text" class="form-control" placeholder="Middle Name">
         <input name="lastName" ng-model="lastName" type="text" class="form-control" placeholder="Last Name" required>
         <select id="country" class="form-control" ng-model="selectedCounrty"
-                ng-change="GetSelectedCountry()">
+                ng-change="GetSelectedCountry()" required>
             <option value=''>Select</option>
             <option value="{{country}}" ng-repeat="(country, states) in countries">{{country}}</option>
         </select>
         <select id="state" class="form-control" ng-model="selectedState" ng-disabled="!selectedCounrty"
-                ng-change="GetSelectedState(stateSrc)">
+                ng-change="GetSelectedState(stateSrc)" required>
             <option value=''>Select</option>
             <option value="{{state}}" ng-repeat="(state, city) in strCountry">{{state}}</option>
         </select>
@@ -25,7 +25,8 @@
             </label>
         </div>
         <p class="help-block" ng-show="form.password_confirm.$dirty && password_confirm != password">please match the passwords.</p>
-        <button ng-disabled="(!form.email.$dirty || form.email.$invalid) || (!form.password_confirm.$dirty || password_confirm != password)"
+        <button ng-disabled="(!form.email.$dirty || form.email.$invalid) || (!form.password_confirm.$dirty || password_confirm != password)
+                || (form.$invalid) || !(accetTnc)"
                 class="btn btn-lg btn-primary btn-block" type="submit">
             Submit
         </button>
