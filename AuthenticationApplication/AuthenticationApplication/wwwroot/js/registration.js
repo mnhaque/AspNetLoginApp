@@ -1,8 +1,7 @@
-﻿authenticationApp.controller('RegisterCtrl', ['$scope',
-    function ($scope) {
+﻿authenticationApp.controller('RegisterCtrl', ['$scope', 'commonAPIService','$location',
+    function ($scope, commonAPIService, $location) {
         var _this = this;
         $scope.countries = {
-
             'USA': {
                 'Alabama': ['Montgomery', 'Birmingham'],
                 'California': ['Sacramento', 'Fremont'],
@@ -20,41 +19,31 @@
         };
 
         $scope.GetSelectedCountry = function () {
-            $scope.strCountry = $scope.countrySrc;
+            $scope.strCountry = $scope.countries[$scope.selectedCounrty];
         };
         $scope.GetSelectedState = function () {
-            $scope.strState = $scope.stateSrc;
+            $scope.strState = $scope.countries[$scope.selectedCounrty][$scope.selectedState];
         };
         _this.submit = function () {
-            alert('ll');
-            //_this.user = {
-            //    email: $scope.email,
-            //    password: $scope.password
-            //};
-            //var url = Config.BASE_URL + 'register';
-            //var promise = $auth.signup(_this.user);
-            //promise.then(function (result) {
-            //    AlertProviderService.showAlert(Config.ALERT_TYPE_SUCCESS, 'You are now registered. Welcome, ' + result.data.user.email + '!');
-            //}).catch(function (error) {
-            //    if (error.status === 409) {
-            //        AlertProviderService.showAlert(Config.ALERT_TYPE_WARNING, error.data.message);
-            //    } else {
-            //        AlertProviderService.showAlert(Config.ALERT_TYPE_WARNING, 'Could not register!!');
-            //    }
-            //});
-            /*var promise = CommonAPI.commonAPICall(Config.API_TYPE_POST, url, _this.user);
+            
+            var user = {
+                'FirstName': $scope.firstName,
+                'Email': $scope.email,
+                'MiddleName': $scope.middleName,
+                'LastName': $scope.lastName,
+                'Country': $scope.selectedCounrty,
+                'State': $scope.selectedState,
+                'AcceptedTnC': $scope.accetTnc,
+                'Password': $scope.password
+            };
+            var promise = commonAPIService.commonAPICall('POST', 'http://localhost:51426/api/Users/Register', user);
             promise.then(function (result) {
               if (result.success) {
-                AuthToken.setToken(result.data.token);
-                AlertProviderService.showAlert(Config.ALERT_TYPE_SUCCESS, 'You are now registered. Welcome, ' + _this.user.email + '!');
+                  $location.path('/home');
               } else {
-                if (result.status === 409) {
-                  AlertProviderService.showAlert(Config.ALERT_TYPE_WARNING, result.error.message);
-                } else {
-                  AlertProviderService.showAlert(Config.ALERT_TYPE_WARNING, 'Could not register!!');
-                }          
+                         
               }
-            });*/
+            });
         };
     }
 ]);

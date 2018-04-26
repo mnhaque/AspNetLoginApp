@@ -33,5 +33,9 @@ namespace AuthenticationApplication.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        public IActionResult Welcome(string name, string lastName)
+        {
+            return View(new User { FirstName=name, LastName=lastName});
+        }
     }
 }

@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AuthenticationApplication.DAL;
+using AuthenticationApplication.Filteres;
+using AuthenticationApplication.Framework;
 using AuthenticationApplication.Models;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,17 +14,38 @@ namespace AuthenticationApplication.Controllers
 {
     [Produces("application/json")]
     [Route("api/Users")]
+    [ExceptionFilter]
     public class UsersController : Controller
     {
-        [HttpPost]
-        public bool Register(User user)
+        private readonly IUserService userService;
+        private readonly IMapper mapper;
+
+        public UsersController(IUserService userService, IMapper mapper)
         {
-            return false;
+            this.userService = userService;
+            this.mapper = mapper;
         }
-        [HttpGet]
-        public bool Login(string userName, string pwd)
+
+        [HttpPost]
+        [ExceptionFilter]
+        [Route("Register")]
+        public async Task<bool> Register([FromBody]User user)
         {
-            return false;
+            return await this.userService.Register(user);
+        }
+
+        [HttpGet]
+        [Route("Login")]
+        [ExceptionFilter]
+        public User Login(string userName, string pwd)
+        {
+            User response = null;
+            var user = this.userService.Login(userName, pwd);
+            if (user != null)
+            {
+                return mapper.Map<User>(user);
+            }
+            return response;
         }
     }
 }

@@ -1,22 +1,14 @@
-﻿authenticationApp.controller('LoginCtrl', ['$scope', function ($scope) {
+﻿authenticationApp.controller('LoginCtrl', ['$scope', 'commonAPIService', '$window', function ($scope, commonAPIService, $window) {
         var _this = this;
 
         
-        _this.submit = function () {
-            _this.user = {
-                email: $scope.email,
-                password: $scope.password
-            };
-            alert(0);
-            //var promise = CommonAPI.commonAPICall(Config.API_TYPE_POST, url, _this.user);
-            /*promise.then(function (result) {
-              if (result.success) {
-                AuthToken.setToken(result.data.token);
-                AlertProviderService.showAlert(Config.ALERT_TYPE_SUCCESS, 'You are now logged in. Welcome, ' + _this.user.email + '!');
-              } else {
-                _this.warningAlert();
+    _this.submit = function () {
+        var promise = commonAPIService.commonAPICall('GET', 'http://localhost:51426/api/Users/Login?userName=' + $scope.email + '&pwd=' + $scope.password);
+            promise.then(function (result) {
+                if (result.success) {
+                    $window.location.href = 'http://localhost:51426/Home/Welcome?name=' + result.data.firstName + '&lastName=' + result.data.lastName;
               }
-            });*/
+            });
         }
     }
 ]);
