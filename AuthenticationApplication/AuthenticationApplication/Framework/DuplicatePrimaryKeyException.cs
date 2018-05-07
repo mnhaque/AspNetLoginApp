@@ -5,7 +5,10 @@ using System.Threading.Tasks;
 
 namespace AuthenticationApplication.Framework
 {
-    public class DuplicatePrimaryKeyException:Exception
+    public class DuplicatePrimaryKeyException : Exception
     {
+        public DuplicatePrimaryKeyException():base("Email id already exists")
+        {
+        }
     }
 }

@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AuthenticationApplication.DAL;
-using AuthenticationApplication.Filteres;
-using AuthenticationApplication.Framework;
-using AuthenticationApplication.Models;
-using AutoMapper;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-
-namespace AuthenticationApplication.Controllers
+﻿namespace AuthenticationApplication.Controllers
 {
+    using System.Threading.Tasks;
+    using AuthenticationApplication.DAL;
+    using AuthenticationApplication.Filteres;
+    using AuthenticationApplication.Models;
+    using AutoMapper;
+    using Microsoft.AspNetCore.Mvc;
+
     [Produces("application/json")]
     [Route("api/Users")]
     [ExceptionFilter]

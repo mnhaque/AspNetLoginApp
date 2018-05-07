@@ -41,7 +41,7 @@
               if (result.success) {
                   $location.path('/home');
               } else {
-                         
+                  $scope.error = result.error.data;
               }
             });
         };

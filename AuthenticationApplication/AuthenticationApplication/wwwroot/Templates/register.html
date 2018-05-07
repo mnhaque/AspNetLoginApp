@@ -1,6 +1,7 @@
-﻿<div ng-controller="RegisterCtrl as register">
+﻿<div ng-controller="RegisterCtrl as register" class="container">
     <h1 class="form-signin-heading">Register</h1>
-    <form ng-submit="register.submit()" name="form" class="form-signin" novalidate>
+    <p class="help-block">{{error}}</p>
+    <form ng-submit="register.submit()" name="form" class="form-signin fit-width" novalidate>
         <input name="firstName" ng-model="firstName" type="text" class="form-control" placeholder="First Name" required>
         <input name="middleName" ng-model="middleName" type="text" class="form-control" placeholder="Middle Name">
         <input name="lastName" ng-model="lastName" type="text" class="form-control" placeholder="Last Name" required>
