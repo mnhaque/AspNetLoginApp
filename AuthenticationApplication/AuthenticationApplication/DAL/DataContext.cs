@@ -8,7 +8,7 @@ namespace AuthenticationApplication.DAL
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
         }
-        public DbSet<User> User { get; set; }
+        public DbSet<User> Users { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().ToTable("User");

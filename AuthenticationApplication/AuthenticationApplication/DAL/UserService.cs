@@ -20,17 +20,18 @@
 
         public User Login(string userName, string password)
         {
-            return dataContext.User.FirstOrDefault(x => x.Email.Equals(userName, StringComparison.OrdinalIgnoreCase) && x.Password.Equals(password));
+            var xx = dataContext.Users;
+            return xx.FirstOrDefault(x => x.Email.Equals(userName, StringComparison.OrdinalIgnoreCase) && x.Password.Equals(password));
         }
 
         public async Task<bool> Register(Models.User user)
         {
 
-            if (dataContext.User.Any(x=>x.Email.Equals(user.Email)))
+            if (dataContext.Users.Any(x=>x.Email.Equals(user.Email)))
             {
                 throw new DuplicatePrimaryKeyException();
             }
-            dataContext.User.Add(mapper.Map<User>(user));
+            dataContext.Users.Add(mapper.Map<User>(user));
             await dataContext.SaveChangesAsync();
             return true;
         }
