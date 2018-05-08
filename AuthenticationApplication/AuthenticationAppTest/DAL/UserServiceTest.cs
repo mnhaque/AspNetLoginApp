@@ -38,6 +38,8 @@
         [TestCleanup]
         public void Cleanup()
         {
+            dataContext.Users.RemoveRange(dataContext.Users);
+            dataContext.SaveChanges();
             mapper.VerifyAll();
         }
         [TestMethod]
