@@ -15,19 +15,25 @@ namespace AuthenticationApplication
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private string contentRootPath = "";
+        public IConfiguration Configuration { get; }
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             Configuration = configuration;
+            contentRootPath = env.ContentRootPath;
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string conn = Configuration.GetConnectionString("DefaultConnection");
+            if (conn.Contains("%CONTENTROOTPATH%"))
+            {
+                conn = conn.Replace("%CONTENTROOTPATH%", contentRootPath);
+            }
             services.AddTransient<IUserService, UserService>();
             services.AddDbContext<DataContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                    options.UseSqlServer(conn));
             var config = new AutoMapper.MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new AutoMapperProfileConfiguration());
