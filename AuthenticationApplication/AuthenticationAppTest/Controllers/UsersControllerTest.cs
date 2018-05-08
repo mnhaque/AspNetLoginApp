@@ -10,6 +10,7 @@ namespace AuthenticationAppTest
     using AutoMapper;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
+    using System.Threading.Tasks;
 
     [TestClass]
     public class UsersControllerTest
@@ -54,7 +55,7 @@ namespace AuthenticationAppTest
         {
             userService.Setup(_ => _.Register(It.IsAny<User>())).Throws(new DuplicatePrimaryKeyException());
             var result = controller.Register(user);
-            Assert.AreEqual(result.Status, System.Threading.Tasks.TaskStatus.Faulted);
+            Assert.AreEqual(result.Status, TaskStatus.Faulted);
             Assert.AreEqual(result.Exception.InnerException.Message, "Email id already exists");
         }
 

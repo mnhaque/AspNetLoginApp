@@ -20,8 +20,7 @@
 
         public User Login(string userName, string password)
         {
-            var xx = dataContext.Users;
-            return xx.FirstOrDefault(x => x.Email.Equals(userName, StringComparison.OrdinalIgnoreCase) && x.Password.Equals(password));
+            return dataContext.Users.FirstOrDefault(x => x.Email.Equals(userName, StringComparison.OrdinalIgnoreCase) && x.Password.Equals(password));
         }
 
         public async Task<bool> Register(Models.User user)
