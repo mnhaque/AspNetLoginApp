@@ -1,13 +1,7 @@
-﻿using AuthenticationApplication.Framework;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Filters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace AuthenticationApplication.Filteres
+﻿namespace AuthenticationApplication.Framework
 {
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc.Filters;
     public class ExceptionFilter: ExceptionFilterAttribute
     {
         public override void OnException(ExceptionContext context)

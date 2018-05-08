@@ -1,34 +1,26 @@
 ﻿namespace AuthenticationApplication.Controllers
 {
     using System.Diagnostics;
+    using AuthenticationApplication.Framework;
     using AuthenticationApplication.Models;
     using Microsoft.AspNetCore.Mvc;
 
+    [ExceptionFilter]
     public class HomeController : Controller
     {
+        [ExceptionFilter]
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
+        [ExceptionFilter]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [ExceptionFilter]
         public IActionResult Welcome(string name, string lastName)
         {
             return View(new User { FirstName=name, LastName=lastName});

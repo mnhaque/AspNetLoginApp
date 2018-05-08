@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace AuthenticationApplication.Framework
+﻿namespace AuthenticationApplication.Framework
 {
+    using System;
     public class DuplicatePrimaryKeyException : Exception
     {
         public DuplicatePrimaryKeyException():base("Email id already exists")

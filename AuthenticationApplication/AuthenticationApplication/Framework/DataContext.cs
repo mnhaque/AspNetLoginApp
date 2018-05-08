@@ -1,7 +1,7 @@
 ﻿using AuthenticationApplication.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace AuthenticationApplication.DAL
+namespace AuthenticationApplication.Framework
 {
     public class DataContext: DbContext
     {

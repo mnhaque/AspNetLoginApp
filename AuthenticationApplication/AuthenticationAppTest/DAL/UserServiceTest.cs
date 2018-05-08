@@ -3,6 +3,7 @@
     using System.Threading.Tasks;
     using AuthenticationApplication.DAL;
     using AuthenticationApplication.Entities;
+    using AuthenticationApplication.Framework;
     using AutoFixture;
     using AutoFixture.AutoMoq;
     using AutoMapper;

@@ -2,7 +2,7 @@
 {
     using System.Threading.Tasks;
     using AuthenticationApplication.DAL;
-    using AuthenticationApplication.Filteres;
+    using AuthenticationApplication.Framework;
     using AuthenticationApplication.Models;
     using AutoMapper;
     using Microsoft.AspNetCore.Mvc;
