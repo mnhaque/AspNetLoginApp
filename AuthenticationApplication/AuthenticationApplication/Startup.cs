@@ -8,10 +8,28 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Swashbuckle.AspNetCore.Swagger;
+
+    /// <summary>
+    /// the startup class
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// The content root path
+        /// </summary>
         private string contentRootPath = "";
+        /// <summary>
+        /// Gets the configuration.
+        /// </summary>
+        /// <value>
+        /// The configuration.
+        /// </value>
         public IConfiguration Configuration { get; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Startup"/> class.
+        /// </summary>
+        /// <param name="configuration">The configuration.</param>
+        /// <param name="env">The env.</param>
         public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             Configuration = configuration;
@@ -19,6 +37,10 @@
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+        /// <summary>
+        /// Configures the services.
+        /// </summary>
+        /// <param name="services">The services.</param>
         public void ConfigureServices(IServiceCollection services)
         {
             string conn = Configuration.GetConnectionString("DefaultConnection").Replace("%CONTENTROOTPATH%", contentRootPath);
@@ -38,6 +60,11 @@
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        /// Configures the specified application.
+        /// </summary>
+        /// <param name="app">The application.</param>
+        /// <param name="env">The env.</param>
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
